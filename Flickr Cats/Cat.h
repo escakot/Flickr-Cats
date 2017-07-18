@@ -8,16 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface Cat : NSObject
+@interface Cat : NSObject <MKAnnotation>
 
 @property (assign, nonatomic) NSInteger catID;
 @property (strong, nonatomic) NSString *owner;
 @property (strong, nonatomic) NSString *secret;
 @property (assign, nonatomic) NSInteger server;
 @property (assign, nonatomic) NSInteger farm;
-@property (strong, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title;
 @property (strong, nonatomic) UIImage *image;
+@property (assign, nonatomic) CLLocationCoordinate2D coordinate;
 
 -(instancetype)initWithInfo:(NSDictionary*)info;
 

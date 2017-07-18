@@ -17,6 +17,7 @@
 		D193840C1F1D714F00B68FCC /* CatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D193840B1F1D714F00B68FCC /* CatCollectionViewCell.m */; };
 		D193840F1F1D778B00B68FCC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D193840E1F1D778B00B68FCC /* DetailViewController.m */; };
 		D19384121F1D973D00B68FCC /* SafariViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19384111F1D973D00B68FCC /* SafariViewController.m */; };
+		D193845A1F1E8BC000B68FCC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D19384591F1E8BC000B68FCC /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		D19384101F1D973D00B68FCC /* SafariViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafariViewController.h; sourceTree = "<group>"; };
 		D19384111F1D973D00B68FCC /* SafariViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafariViewController.m; sourceTree = "<group>"; };
 		D19384571F1E4F7000B68FCC /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		D19384591F1E8BC000B68FCC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D193845A1F1E8BC000B68FCC /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +60,7 @@
 			children = (
 				D19383EF1F1D6B2D00B68FCC /* Flickr Cats */,
 				D19383EE1F1D6B2D00B68FCC /* Products */,
+				D19384581F1E8BC000B68FCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +103,14 @@
 				D19383F11F1D6B2D00B68FCC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D19384581F1E8BC000B68FCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D19384591F1E8BC000B68FCC /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

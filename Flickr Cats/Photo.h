@@ -1,5 +1,5 @@
 //
-//  Cat.h
+//  Photo.h
 //  Flickr Cats
 //
 //  Created by Errol Cheong on 2017-07-17.
@@ -10,9 +10,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface Cat : NSObject <MKAnnotation>
+@interface Photo : NSObject <MKAnnotation>
 
-@property (assign, nonatomic) NSInteger catID;
+@property (assign, nonatomic) NSInteger photoID;
 @property (strong, nonatomic) NSString *owner;
 @property (strong, nonatomic) NSString *secret;
 @property (assign, nonatomic) NSInteger server;

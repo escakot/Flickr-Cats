@@ -23,11 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.imageView.image = self.cat.image;
-    self.navigationItem.title = self.cat.title;
+    self.imageView.image = self.photo.image;
+    self.navigationItem.title = self.photo.title;
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&format=json&nojsoncallback=1&api_key=%@&photo_id=%li", api_key, self.cat.catID]];
-    NSURL *geoURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&format=json&nojsoncallback=1&api_key=%@&photo_id=%li", api_key, self.cat.catID]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&format=json&nojsoncallback=1&api_key=%@&photo_id=%li", api_key, self.photo.photoID]];
+    NSURL *geoURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.geo.getLocation&format=json&nojsoncallback=1&api_key=%@&photo_id=%li", api_key, self.photo.photoID]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     NSURLRequest *geoRequest = [[NSURLRequest alloc] initWithURL:geoURL];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -41,14 +41,14 @@
         }
         
         NSError *jsonError;
-        NSDictionary *catData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        NSDictionary *photoData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
         
         if (jsonError)
         {
             NSLog(@"json Error: %@", jsonError.localizedDescription);
         }
         
-        self.moreInfoURL = [NSURL URLWithString:catData[@"photo"][@"urls"][@"url"][0][@"_content"]];
+        self.moreInfoURL = [NSURL URLWithString:photoData[@"photo"][@"urls"][@"url"][0][@"_content"]];
     }];
     
     NSURLSessionDataTask *geoTask = [session dataTaskWithRequest:geoRequest completionHandler:^(NSData * data, NSURLResponse * response, NSError * error)
@@ -66,8 +66,8 @@
             NSLog(@"json Error: %@", jsonError.localizedDescription);
         }
         
-        self.cat.coordinate = CLLocationCoordinate2DMake([geoData[@"photo"][@"location"][@"latitude"] floatValue], [geoData[@"photo"][@"location"][@"latitude"] floatValue]);
-//        NSLog(@"%@",geoData[@"photo"][@"location"]);
+        self.photo.coordinate = CLLocationCoordinate2DMake([geoData[@"photo"][@"location"][@"latitude"] floatValue], [geoData[@"photo"][@"location"][@"longitude"] floatValue]);
+        NSLog(@"%@",geoData[@"photo"][@"location"]);
         //Map Information
         self.mapView.showsBuildings = YES;
         self.mapView.showsPointsOfInterest = YES;
@@ -76,11 +76,11 @@
         
         //Point Annotation
         MKPointAnnotation *myPoint = [[MKPointAnnotation alloc]init];
-        myPoint.title = @"Cat Photo";
-        myPoint.subtitle = self.cat.title;
-        myPoint.coordinate = self.cat.coordinate;
+        myPoint.title = @"Photo location:";
+        myPoint.subtitle = self.photo.title;
+        myPoint.coordinate = self.photo.coordinate;
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.mapView.region = MKCoordinateRegionMake(self.cat.coordinate, span);
+            self.mapView.region = MKCoordinateRegionMake(self.photo.coordinate, span);
             [self.mapView addAnnotation:myPoint];
         }];
         
@@ -95,7 +95,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     SafariViewController *dvc = segue.destinationViewController;
-    dvc.catURL = self.moreInfoURL;
+    dvc.photoURL = self.moreInfoURL;
 }
 
 

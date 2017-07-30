@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Cat.h"
+#import "Photo.h"
 
-@interface CatCollectionViewCell : UICollectionViewCell
+@interface PhotoCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) Cat *cat;
+@property (strong, nonatomic) Photo *photo;
 
 @end

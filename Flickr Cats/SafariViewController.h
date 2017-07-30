@@ -10,6 +10,6 @@
 
 @interface SafariViewController : UIViewController
 
-@property (strong, nonatomic) NSURL *catURL;
+@property (strong, nonatomic) NSURL *photoURL;
 
 @end

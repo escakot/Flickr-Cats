@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:self.catURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:self.photoURL];
     
     [self.webView loadRequest:request];
 }

@@ -47,5 +47,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    if (![url.scheme isEqual:@"http"] && ![url.scheme isEqual:@"https"]) {
+        if ([[url scheme] isEqualToString:@"iosflickrapp"])
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"URLSCHEMENOTIFICATION" object:url];
+        }
+        return NO;
+    }
+    return YES;
+}
 
 @end

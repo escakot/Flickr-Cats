@@ -6,22 +6,22 @@
 //  Copyright © 2017 Errol Cheong. All rights reserved.
 //
 
-#import "CatCollectionViewCell.h"
+#import "PhotoCollectionViewCell.h"
 
-@interface CatCollectionViewCell ()
+@interface PhotoCollectionViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
-@implementation CatCollectionViewCell
+@implementation PhotoCollectionViewCell
 
--(void)setCat:(Cat *)cat{
-    self.titleLabel.text = cat.title;
-    self.imageView.image = cat.image;
+-(void)setPhoto:(Photo *)photo{
+    self.titleLabel.text = photo.title;
+    self.imageView.image = photo.image;
     
-    _cat = cat;
+    _photo = photo;
 }
 
 
